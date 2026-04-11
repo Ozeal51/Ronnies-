@@ -6,6 +6,7 @@ import ServiceCard from './components/ServiceCard'
 import SiteNav from './components/SiteNav'
 import './App.css'
 
+// Primary one-page navigation links (used in header and footer).
 const navLinks = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About' },
@@ -14,6 +15,7 @@ const navLinks = [
   { href: '#contact', label: 'Contact' },
 ]
 
+// Core salon offerings displayed in the Services section.
 const services = [
   {
     title: 'Braiding',
@@ -53,6 +55,7 @@ const services = [
   },
 ]
 
+// Responsive gallery placeholders to showcase salon aesthetics.
 const galleryImages = [
   {
     src: 'https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=900&q=80',
@@ -84,6 +87,7 @@ function App() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
+  // External contact and location links used across CTA areas.
   const whatsappLink = 'https://wa.me/2348033207529?text=Hello%20Ronnie%27s%20Hair%20Salon,%20I%20would%20like%20to%20book%20an%20appointment.'
   const instagramLink = 'https://instagram.com/ronnieshairsalon'
   const locationLink = 'https://www.google.com/maps/search/?api=1&query=Aminu+Kano+Crescent+Wuse+2+Abuja+Nigeria'
@@ -338,6 +342,7 @@ function App() {
   )
 }
 
+// Small inline SVG icon set used by service cards.
 function ServiceIcon({ type }) {
   const paths = {
     braid: 'M12 3c2.8 0 5 2.2 5 5v2.2l1.7 1.7c.9.9 1.3 2 1.3 3.2v1.9c0 2.8-2.2 5-5 5H9c-2.8 0-5-2.2-5-5v-1.9c0-1.2.5-2.3 1.3-3.2L7 10.2V8c0-2.8 2.2-5 5-5Zm0 2c-1.7 0-3 1.3-3 3v2.8l-2.3 2.3c-.4.4-.7 1-.7 1.6v1.9c0 1.7 1.3 3 3 3h6c1.7 0 3-1.3 3-3v-1.9c0-.6-.2-1.2-.7-1.6L15 10.8V8c0-1.7-1.3-3-3-3Zm-2.5 9.5h5v2h-5v-2Z',
@@ -355,6 +360,7 @@ function ServiceIcon({ type }) {
   )
 }
 
+// Floating WhatsApp quick-chat icon.
 function WhatsAppIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" role="presentation">

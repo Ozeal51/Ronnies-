@@ -1,3 +1,4 @@
+// Responsive image gallery grid with lazy-loaded images.
 export default function GalleryGrid({ images }) {
   return (
     <div className="gallery-grid">

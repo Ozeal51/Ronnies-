@@ -1,3 +1,4 @@
+// Service item card used in the services grid.
 export default function ServiceCard({ title, description, price, icon }) {
   return (
     <article className="service-card">

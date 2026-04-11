@@ -1,3 +1,4 @@
+// Sticky top navigation with section links and booking CTA.
 export default function SiteNav({ links }) {
   return (
     <header className="site-header">
