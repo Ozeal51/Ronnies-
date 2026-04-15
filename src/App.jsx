@@ -9,13 +9,15 @@ import './App.css'
 // Primary one-page navigation links (used in header and footer).
 const navLinks = [
   { href: '#home', label: 'Home' },
+  { href: '#experience', label: 'New Guests' },
   { href: '#about', label: 'About' },
   { href: '#services', label: 'Services' },
+  { href: '#testimonials', label: 'Reviews' },
   { href: '#gallery', label: 'Gallery' },
   { href: '#contact', label: 'Contact' },
 ]
 
-// Core salon offerings displayed in the Services section.
+// Core salon offerings displayed in the service menu section.
 const services = [
   {
     title: 'Braiding',
@@ -55,6 +57,61 @@ const services = [
   },
 ]
 
+// New guest journey, inspired by the reference flow.
+const guestSteps = [
+  {
+    number: '01',
+    title: 'Choose Your Service',
+    description: 'Select your ideal service from braiding, installs, treatment, coloring, and styling.',
+    action: { label: 'View Service Menu', href: '#services' },
+  },
+  {
+    number: '02',
+    title: 'Tell Us Your Goal',
+    description: 'Share your desired look, hair history, and timing so we can personalize your appointment.',
+    action: { label: 'Send a Message', href: '#contact' },
+  },
+  {
+    number: '03',
+    title: 'Book Your Appointment',
+    description: 'Secure your date via WhatsApp and get ready for your premium Ronnie’s salon experience.',
+    action: { label: 'Book Now', href: 'https://wa.me/2348033207529?text=Hello%20Ronnie%27s%20Hair%20Salon,%20I%20would%20like%20to%20book%20an%20appointment.' },
+  },
+]
+
+const testimonials = [
+  {
+    quote: 'Lovely ambience, very neat braids, and the service felt premium from start to finish.',
+    author: '— Amina M.',
+  },
+  {
+    quote: 'My wig install looked so natural. Ronnie’s team is patient, professional, and very skilled.',
+    author: '— Chidinma O.',
+  },
+  {
+    quote: 'I came in for treatment and styling and left feeling confident and refreshed. Highly recommended!',
+    author: '— Esther K.',
+  },
+]
+
+const specialties = [
+  {
+    title: 'The Signature Ronnie Blend',
+    description:
+      'A balanced color + treatment package that adds depth, shine, and healthy softness while keeping your look effortlessly elegant.',
+  },
+  {
+    title: 'Luxury Wig Perfection',
+    description:
+      'Custom wig fitting, secure installation, and seamless finishing tailored for natural movement and confident wear.',
+  },
+  {
+    title: 'Glow & Restore Treatment',
+    description:
+      'Intensive hydration and scalp-focused care designed to revive stressed hair and support long-term strength.',
+  },
+]
+
 // Responsive gallery placeholders to showcase salon aesthetics.
 const galleryImages = [
   {
@@ -85,7 +142,9 @@ const galleryImages = [
 
 function App() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' })
+  const [emailSignup, setEmailSignup] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false)
 
   // External contact and location links used across CTA areas.
   const whatsappLink = 'https://wa.me/2348033207529?text=Hello%20Ronnie%27s%20Hair%20Salon,%20I%20would%20like%20to%20book%20an%20appointment.'
@@ -103,40 +162,47 @@ function App() {
     setFormState({ name: '', email: '', message: '' })
   }
 
+  const handleNewsletterSubmit = (event) => {
+    event.preventDefault()
+    setNewsletterSubmitted(true)
+    setEmailSignup('')
+  }
+
   return (
-    <div className="app-shell">
+    <div className="app-shell rose-inspired-theme">
       <SiteNav links={navLinks} />
 
       <main>
         <section className="hero-section" id="home">
           <div className="hero-content">
             <div className="hero-copy reveal">
-              <span className="pill">Aminu Kano Crescent, Wuse 2, Abuja</span>
-              <h1>Luxury hair care designed for modern women.</h1>
+              <span className="pill">Ronnie&apos;s Hair Salon · Wuse 2, Abuja</span>
+              <p className="hero-kicker">Let us help you blossom into your best self.</p>
+              <h1>Luxury beauty experiences tailored for modern women.</h1>
               <p className="hero-text">
-                Ronnie&apos;s Hair Salon creates elegant braids, expert wig installs, glowing treatments,
-                and premium styling with a soft feminine touch.
+                At Ronnie&apos;s Hair Salon, we blend artistry, healthy hair practices, and feminine elegance
+                to deliver beautiful, confidence-boosting results every visit.
               </p>
               <div className="hero-actions">
                 <a className="primary-button" href={whatsappLink} target="_blank" rel="noreferrer">
                   Book Appointment
                 </a>
-                <a className="secondary-button" href="#contact">
-                  Contact Us
+                <a className="secondary-button" href="#experience">
+                  New Guest Guide
                 </a>
               </div>
               <div className="hero-metrics" aria-label="Salon highlights">
                 <div>
+                  <strong>5-Star</strong>
+                  <span>customer care focus</span>
+                </div>
+                <div>
+                  <strong>Healthy Hair</strong>
+                  <span>treatment-first approach</span>
+                </div>
+                <div>
                   <strong>Premium</strong>
-                  <span>salon experience</span>
-                </div>
-                <div>
-                  <strong>Mobile-first</strong>
-                  <span>booking journey</span>
-                </div>
-                <div>
-                  <strong>Luxury</strong>
-                  <span>soft glam finish</span>
+                  <span>soft glam finishes</span>
                 </div>
               </div>
             </div>
@@ -144,8 +210,37 @@ function App() {
             <div className="hero-visual reveal">
               <div className="hero-image-card">
                 <img src={heroImage} alt="Ronnie's Hair Salon sign" />
-                <div className="image-badge">Personalized beauty, every visit</div>
+                <div className="image-badge">Aminu Kano Crescent, Wuse 2 · Abuja</div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section guest-section" id="experience">
+          <div className="container">
+            <SectionHeading
+              eyebrow="The New Guest Experience"
+              title="A calm three-step path to your perfect hair day."
+              description="Inspired by premium salon booking journeys, we make getting started simple, clear, and stress-free."
+              align="center"
+            />
+
+            <div className="guest-grid">
+              {guestSteps.map((step) => (
+                <article className="guest-card reveal" key={step.number}>
+                  <span className="step-number">{step.number}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                  <a
+                    href={step.action.href}
+                    className="inline-link"
+                    target={step.action.href.startsWith('http') ? '_blank' : undefined}
+                    rel={step.action.href.startsWith('http') ? 'noreferrer' : undefined}
+                  >
+                    {step.action.label}
+                  </a>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -154,8 +249,8 @@ function App() {
           <div className="container">
             <SectionHeading
               eyebrow="About Us"
-              title="A warm, feminine salon built around confidence and care."
-              description="Ronnie's Hair Salon serves women who want polished looks, healthy hair, and a calm premium experience from start to finish."
+              title="A feminine salon experience rooted in beauty, confidence, and care."
+              description="Ronnie's Hair Salon serves women who value polished looks, healthy hair, and a welcoming luxury environment in Abuja."
             />
 
             <div className="about-grid">
@@ -191,15 +286,43 @@ function App() {
         <section className="section services-section" id="services">
           <div className="container">
             <SectionHeading
-              eyebrow="Services"
-              title="Signature services for everyday elegance and special moments."
-              description="Choose from protective styling, installation, treatment, and color services crafted to match your lifestyle."
+              eyebrow="Select Your Services"
+              title="A premium service menu designed around your lifestyle."
+              description="From protective styles to treatment and transformative color, each appointment is tailored to your hair goals."
               align="center"
             />
 
             <div className="services-grid">
               {services.map((service) => (
                 <ServiceCard key={service.title} {...service} />
+              ))}
+            </div>
+
+            <div className="specialties-grid" aria-label="Our specialties">
+              {specialties.map((item) => (
+                <article className="specialty-card reveal" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section testimonials-section" id="testimonials">
+          <div className="container">
+            <SectionHeading
+              eyebrow="What People Are Saying"
+              title="Real guest love from women who trust Ronnie’s."
+              align="center"
+            />
+
+            <div className="testimonial-grid">
+              {testimonials.map((item) => (
+                <blockquote className="testimonial-card reveal" key={item.author}>
+                  <p>&ldquo;{item.quote}&rdquo;</p>
+                  <cite>{item.author}</cite>
+                </blockquote>
               ))}
             </div>
           </div>
@@ -209,11 +332,41 @@ function App() {
           <div className="container">
             <SectionHeading
               eyebrow="Gallery"
-              title="A preview of the soft glam looks we love."
-              description="Browse a responsive showcase of beautiful hairstyle inspiration and polished salon aesthetics."
+              title="Explore soft glam inspiration and signature Ronnie’s finishes."
+              description="A responsive showcase of salon-style beauty visuals that adapts elegantly across screen sizes."
               align="center"
             />
             <GalleryGrid images={galleryImages} />
+          </div>
+        </section>
+
+        <section className="section newsletter-section" id="updates">
+          <div className="container">
+            <div className="newsletter-card reveal">
+              <SectionHeading
+                eyebrow="Stay In The Know"
+                title="Join the Ronnie’s community for offers, updates, and beauty tips."
+                description="Get salon updates and seasonal beauty inspiration directly in your inbox."
+              />
+
+              <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
+                <label htmlFor="newsletter-email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="newsletter-email"
+                  type="email"
+                  value={emailSignup}
+                  onChange={(event) => setEmailSignup(event.target.value)}
+                  placeholder="Enter your email"
+                  required
+                />
+                <button type="submit" className="primary-button">
+                  Sign Up
+                </button>
+              </form>
+              {newsletterSubmitted ? <p className="form-note">You&apos;re in! We&apos;ll keep you updated.</p> : null}
+            </div>
           </div>
         </section>
 
@@ -223,7 +376,7 @@ function App() {
               <SectionHeading
                 eyebrow="Contact"
                 title="Let’s book your next beautiful look."
-                description="Reach us on WhatsApp, Instagram, or visit us at Aminu Kano Crescent, Wuse 2, Abuja."
+                description="Reach us on WhatsApp, Instagram, or visit us at Aminu Kano Crescent, Wuse 2, Abuja, Nigeria."
               />
 
               <div className="contact-links">
@@ -307,7 +460,7 @@ function App() {
           </div>
 
           <div>
-            <h3>Quick links</h3>
+            <h3>Additional Links</h3>
             <div className="footer-links">
               {navLinks.map((link) => (
                 <a key={link.href} href={link.href}>

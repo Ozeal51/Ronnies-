@@ -1,31 +1,32 @@
-# Ronnie's Hair Salon Website
+# Ronnie's Hair Salon — Premium Beauty Landing Page
 
-A modern, mobile-first React web application for **Ronnie's Hair Salon**, located at **Aminu Kano Crescent, Wuse 2, Abuja, Nigeria**.
+Reference-inspired, mobile-first React website for **Ronnie's Hair Salon** in **Aminu Kano Crescent, Wuse 2, Abuja, Nigeria**.
 
-The site uses a clean, elegant, feminine design system with soft blush/nude tones, subtle animation, smooth scrolling, and reusable components.
+The current design direction mirrors the clean, feminine, editorial salon style you requested, with Ronnie's branding/content and the provided salon hero image.
 
-## Features
+## What’s Included
 
-- Mobile-first responsive design (phone, tablet, desktop)
-- Sticky navigation with smooth in-page scrolling
-- Hero section using the real salon signage image (`src/assets/ronnies.jpeg`)
+- Sticky header with smooth-scroll section links
+- Editorial hero section with Ronnie’s real signboard image (`src/assets/ronnies.jpeg`)
+- New Guest Experience (3-step onboarding flow)
 - About section (mission, vision, customer promise)
-- Services grid with descriptions and pricing hints
-- Responsive gallery grid (2 columns on small screens, 3–4 on larger screens)
+- Service menu with reusable service cards + specialties grid
+- Testimonials section
+- Responsive gallery (2 columns on mobile, 3–4 on larger screens)
+- Newsletter/signup-style section
 - Contact section with:
-	- WhatsApp CTA: `08033207529`
+	- WhatsApp quick book: `08033207529`
 	- Instagram: `https://instagram.com/ronnieshairsalon`
-	- Google Maps embed (Aminu Kano Crescent, Wuse 2, Abuja)
+	- Google Maps embed for Wuse 2, Abuja
 	- Contact form UI (name, email, message)
-- Floating WhatsApp chat button
-- Accessible focus states and reduced-motion support
-- SEO-friendly semantic sectioning (`header`, `main`, `section`, `footer`)
+- Floating WhatsApp button
+- Accessibility support (focus states + reduced motion)
 
 ## Tech Stack
 
 - React (functional components + hooks)
 - Vite
-- Modern CSS (custom properties, responsive grid/flex, media queries)
+- Modern CSS (custom properties, grid, flex, responsive breakpoints)
 - ESLint
 
 ## Project Structure
@@ -45,80 +46,60 @@ src/
 		SiteNav.jsx
 ```
 
-## Quick Start
-
-### 1) Install dependencies
+## Run Locally
 
 ```powershell
 npm install
-```
-
-### 2) Run development server
-
-```powershell
 npm run dev
 ```
 
-### 3) Build for production
+Open the URL shown by Vite (usually `http://localhost:5173`).
+
+## Build for Production
 
 ```powershell
 npm run build
-```
-
-### 4) Preview production build
-
-```powershell
 npm run preview
 ```
 
-## Available Scripts
+## Scripts
 
-- `npm run dev` — start local development server
+- `npm run dev` — start local dev server
 - `npm run build` — create optimized production build
-- `npm run preview` — serve production build locally
-- `npm run lint` — run ESLint checks
+- `npm run preview` — preview production build locally
+- `npm run lint` — run ESLint
 
-## Customization Guide
+## Customization Notes
 
-- Update brand copy/content in `src/App.jsx`:
-	- navigation links (`navLinks`)
-	- services list (`services`)
-	- gallery images (`galleryImages`)
-	- contact links (`whatsappLink`, `instagramLink`, `locationLink`)
-- Update color palette and typography in `src/index.css` (`:root` variables)
-- Adjust layout/animations in `src/App.css`
-- Replace hero image in `src/assets/` and update import if filename changes
+- Update text/content data in `src/App.jsx`:
+	- `navLinks`
+	- `guestSteps`
+	- `services`
+	- `specialties`
+	- `testimonials`
+	- `galleryImages`
+- Update theme tokens in `src/index.css` (`:root`)
+- Update section styling and responsive behavior in `src/App.css`
+- Replace hero image in `src/assets/` and keep/update the import in `src/App.jsx`
 
-## Accessibility Notes
+## Minimal Code Comments
 
-- Strong color contrast for content and CTAs
-- Keyboard-visible focus rings on interactive elements
-- `prefers-reduced-motion` media query to minimize animation for users who request it
-- Meaningful `alt` text for imagery and icons marked decorative where appropriate
+Minimal comments are added only where structure/intent benefits maintainability:
 
-## Performance Notes
+- `src/App.jsx` (data blocks and helper/icon sections)
+- `src/components/*.jsx` (component intent)
 
-- Gallery images lazy-load (`loading="lazy"`)
-- Layout uses lightweight CSS without heavy runtime UI libraries
-- Vite production build for fast loading and deployment
+## SEO, Accessibility, Performance
 
-## Deployment
+- Semantic structure (`header`, `main`, `section`, `footer`)
+- Keyboard focus-visible styles for interactive controls
+- `prefers-reduced-motion` support
+- Lazy-loaded gallery images
+- Lean CSS/React implementation for fast loading
 
-This is a static Vite app and can be deployed to platforms like:
-
-- Vercel
-- Netlify
-- GitHub Pages (with Vite static build output)
-
-Build output is generated in the `dist/` folder after running:
-
-```powershell
-npm run build
-```
-
-## Contact Info Used in This Project
+## Contact Details (Configured)
 
 - **Business:** Ronnie's Hair Salon
 - **Address:** Aminu Kano Crescent, Wuse 2, Abuja, Nigeria
-- **WhatsApp:** 08033207529
+- **WhatsApp:** `08033207529`
 - **Instagram:** `@ronnieshairsalon`
